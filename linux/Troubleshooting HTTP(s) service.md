@@ -1,30 +1,34 @@
 
 # Troubleshooting HTTPS(s) service
 
-1. First we need to check if the service is running. We can use the following command: 
+1.    Verify systemd service is running. 
 
-    **`sudo systemctl status <service_name>`** (for example nginx, jenkins)
+    ```systemctl status <service_name>`** (for example nginx, jenkins)```
+1.1.    If not part of systemd or a sub-process, verify it is running, using ps
+    ```ps -aux | grep process_name```
 
-2. Next we have to check if the port is open and which process is using it. Use the following command:
+2.    Verify internal connectivity 
     
-    **`sudo netstat -tnlp | grep <port_number>`**
+    ```sudo netstat -tnlp | grep <port_number>```
 
-3. Then we must check the result when accessing the port locally. The following commands can be used:
+3.    In case of a HTTP service, examine it can be accessed internally
     
-    **`curl localhost:<port_number>`** 
+    ```curl localhost:<port_number>```
     
     or
 
-    **`ncat -v -n 127.0.0.1 <port_number>`** 
+    ```ncat -v -n 127.0.0.1 <port_number>```
 
-4. We continue by checking if we have added a firewall rule for the port. We can achieve this by:
+4.     Check Linux box firewall. In case of Ubuntu and ufw:
 
-    **`sudo ufw status`**
+    ```ufw status
+       ufw app list```
+4.1.    Verify connectivity throughout the routing chain.
 
-5. Next step is to check for an existing DNS record with the following command:
+5.    In case of a service accessed by its DNS, verify DNS is resolving to the correct address:
 
-    **`nslookup <domain_name>`**
+    ```nslookup <domain_name>```
 
-6. Finally we check if the service is accessible from external clients. We can use the following command:
+6.    Examine service response accessed from the public domain:
 
-    **`curl <domain_name>`**
+    ```curl <domain_name>```
