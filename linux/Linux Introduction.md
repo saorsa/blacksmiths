@@ -5,8 +5,11 @@
   - Inodes
     - At the time a new file is created, it gets a free inode. In that inode is the following information:  
             ```Owner and group owner of the file.
-            File type (regular, directory, ...)
+
+            File type (regular, directory, ...)<br  />
             Permissions on the file Section 3.4.1  
+
+            
             Date and time of creation, last read and change.  
             Date and time this information has been changed in the inode.  
             Number of links to this file.  
