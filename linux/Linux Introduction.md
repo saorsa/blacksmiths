@@ -1,9 +1,9 @@
-Linux and BASH
-**Posix**
-https://tldp.org/LDP/intro-linux/html/index.html
-The linux filesystem  https://tldp.org/LDP/intro-linux/html/sect_03_01.html
-    Inodes
-        At the time a new file is created, it gets a free inode. In that inode is the following information:
+- Linux and BASH
+- Posix
+- https://tldp.org/LDP/intro-linux/html/index.html
+- The linux filesystem  https://tldp.org/LDP/intro-linux/html/sect_03_01.html
+  - Inodes
+    - At the time a new file is created, it gets a free inode. In that inode is the following information:
             Owner and group owner of the file.
             File type (regular, directory, ...)
             Permissions on the file Section 3.4.1
@@ -54,7 +54,7 @@ Exploring filesystem
             Using text pattern
             Using regular expression
 Linux redirection https://www.guru99.com/linux-redirection.html
-Pipes and their usage, the grep command
+Pipes and their usage, the grep command (IPC) https://tldp.org/LDP/lpg/node21.html
 CRON jobs, their definition
 Using the tar command to archive/unarchive files
 Using the gzip/gunzip commands
@@ -79,6 +79,8 @@ SSH
 Rsync - syncing files across folders and boxes(using ssh) - a simple tutorial
 BASH
     Variables, output redirection
+    read
+    Control statements
     Bash brackets https://dev.to/rpalo/bash-brackets-quick-reference-4eh6
     Functions
     Detecting arguments and positional parameters
@@ -86,4 +88,3 @@ BASH
     Interpolating command in a Variables
     conditional statements
     Loops
-zxasas
