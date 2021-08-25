@@ -1,5 +1,5 @@
 Linux and BASH
-Posix
+**Posix**
 https://tldp.org/LDP/intro-linux/html/index.html
 The linux filesystem  https://tldp.org/LDP/intro-linux/html/sect_03_01.html
     Inodes
