@@ -4,8 +4,8 @@
 - The linux filesystem  https://tldp.org/LDP/intro-linux/html/sect_03_01.html
   - Inodes
     - At the time a new file is created, it gets a free inode. In that inode is the following information:  
-            ```Owner and group owner of the file.  
-            File type (regular, directory, ...)  
+            ```Owner and group owner of the file.
+            File type (regular, directory, ...)
             Permissions on the file Section 3.4.1  
             Date and time of creation, last read and change.  
             Date and time this information has been changed in the inode.  
@@ -26,23 +26,23 @@
     
 
 - Navigating the file system
- - The most important files https://tldp.org/LDP/intro-linux/html/sect_03_02.html
- - Listing attributes and permissions
- - Sorting by modified date
- - The home directory and the ~/ shortcut
+  - The most important files https://tldp.org/LDP/intro-linux/html/sect_03_02.html
+  - Listing attributes and permissions
+  - Sorting by modified date
+  - The home directory and the ~/ shortcut
 - Exploring filesystem
- - Which directory am I in?
- - How much free space is there (how much ram is there?)?
- - Where is a file located (if in the current $PATH definition)
- - Show file contents
- - Create a new empty file
- - Append text to a file
- - Append multiline text to a file
- - Remove files, directories recursively 
- - Showing only the beginning or the end of a file. Follow the end of a file.
- - Comparing file differences
- - Counting words/lines in a file
- - Filesystem permissions
+  - Which directory am I in?
+  - How much free space is there (how much ram is there?)?
+  - Where is a file located (if in the current $PATH definition)
+  - Show file contents
+  - Create a new empty file
+  - Append text to a file
+  - Append multiline text to a file
+  - Remove files, directories recursively 
+  - Showing only the beginning or the end of a file. Follow the end of a file.
+  - Comparing file differences
+  - Counting words/lines in a file
+  - Filesystem permissions
     - Users and groups. Their location on the file system
       - https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-permissions
       - Explain the chmod, chown commands. Change permissions recursively
