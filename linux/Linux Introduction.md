@@ -4,6 +4,7 @@
 - The linux filesystem  https://tldp.org/LDP/intro-linux/html/sect_03_01.html
   - Inodes
     - At the time a new file is created, it gets a free inode. In that inode is the following information:  
+            
             ```Owner and group owner of the file.
             File type (regular, directory, ...)
             Permissions on the file Section 3.4.1  
@@ -12,6 +13,7 @@
             Number of links to this file.  
             File size  
             An address defining the actual location of the file data.```
+            
 - https://www.linux.com/training-tutorials/linux-filesystem-explained/
 - Everything is a file concept - what is it?
 - The kernel
