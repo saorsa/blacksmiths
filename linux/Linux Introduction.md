@@ -30,6 +30,7 @@
 - Navigating the file system
   - The most important files https://tldp.org/LDP/intro-linux/html/sect_03_02.html
   - Listing attributes and permissions
+  ![ls,ll](.\images\ls.png)
   - Sorting by modified date
   - The home directory and the ~/ shortcut
 - Exploring filesystem
@@ -90,3 +91,8 @@
   - Interpolating command in a Variables
   - conditional statements
   - Loops
+
+
+
+  https://www.youtube.com/watch?v=oxuRxtrO2Ag
+  https://www.youtube.com/watch?v=dDyoNC33TY8
