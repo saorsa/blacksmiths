@@ -101,9 +101,9 @@ Mem:           5833          97        5670           0          66        5582
 Swap:          2048           0        2048
 ```
   - Where is a file located (if in the current $PATH definition)
-  ```console
-  the_great_danton@DESKTOP-7QSFUSB:/$ find /bin/ -name 'ls'
-  /bin/ls
+```console
+the_great_danton@DESKTOP-7QSFUSB:/$ find /bin/ -name 'ls'
+/bin/ls
 ```
   - Show file contents
   ```console
@@ -212,6 +212,8 @@ the_great_danton@DESKTOP-7QSFUSB:~$ wc file1
  1  2 10 file1
  ```
  ```console
+ the_great_danton@DESKTOP-7QSFUSB:~$ cat file1
+two words
 the_great_danton@DESKTOP-7QSFUSB:~$ wc file1
  1  5 21 file1
  ```
