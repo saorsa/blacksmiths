@@ -212,8 +212,8 @@ the_great_danton@DESKTOP-7QSFUSB:~$ wc file1
  1  2 10 file1
  ```
  ```console
- the_great_danton@DESKTOP-7QSFUSB:~$ cat file1
-two words
+the_great_danton@DESKTOP-7QSFUSB:~$ cat file1
+Here we have 5 words
 the_great_danton@DESKTOP-7QSFUSB:~$ wc file1
  1  5 21 file1
  ```
