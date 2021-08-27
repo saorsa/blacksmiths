@@ -30,7 +30,29 @@
 - Navigating the file system
   - The most important files https://tldp.org/LDP/intro-linux/html/sect_03_02.html
   - Listing attributes and permissions
-  ![ls,ll](.\images\ls.png)
+```bash
+the_great_danton@DESKTOP-7QSFUSB:~$ ll
+total 28
+drwxr-xr-x 4 the_great_danton the_great_danton 4096 Aug 27 10:45 ./
+drwxr-xr-x 3 root             root             4096 Aug 27 10:44 ../
+-rw-r--r-- 1 the_great_danton the_great_danton  220 Aug 27 10:44 .bash_logout
+-rw-r--r-- 1 the_great_danton the_great_danton 3771 Aug 27 10:44 .bashrc
+drwxr-xr-x 2 the_great_danton the_great_danton 4096 Aug 27 10:44 .landscape/
+drwxr-xr-x 3 the_great_danton the_great_danton 4096 Aug 27 10:45 .local/
+-rw-r--r-- 1 the_great_danton the_great_danton    0 Aug 27 10:44 .motd_shown
+-rw-r--r-- 1 the_great_danton the_great_danton  807 Aug 27 10:44 .profile
+the_great_danton@DESKTOP-7QSFUSB:~$ ls -al
+total 28
+drwxr-xr-x 4 the_great_danton the_great_danton 4096 Aug 27 10:45 .
+drwxr-xr-x 3 root             root             4096 Aug 27 10:44 ..
+-rw-r--r-- 1 the_great_danton the_great_danton  220 Aug 27 10:44 .bash_logout
+-rw-r--r-- 1 the_great_danton the_great_danton 3771 Aug 27 10:44 .bashrc
+drwxr-xr-x 2 the_great_danton the_great_danton 4096 Aug 27 10:44 .landscape
+drwxr-xr-x 3 the_great_danton the_great_danton 4096 Aug 27 10:45 .local
+-rw-r--r-- 1 the_great_danton the_great_danton    0 Aug 27 10:44 .motd_shown
+-rw-r--r-- 1 the_great_danton the_great_danton  807 Aug 27 10:44 .profile
+the_great_danton@DESKTOP-7QSFUSB:~$
+```
   - Sorting by modified date
   - The home directory and the ~/ shortcut
 - Exploring filesystem
