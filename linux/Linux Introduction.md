@@ -106,7 +106,7 @@ Swap:          2048           0        2048
   /bin/ls
 ```
   - Show file contents
-  ```consloe
+  ```console
 the_great_danton@DESKTOP-7QSFUSB:~$ cat Two\ cures\ for\ love
   Two Cures for Love
   Wendy Cope
