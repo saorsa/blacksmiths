@@ -220,14 +220,80 @@ the_great_danton@DESKTOP-7QSFUSB:~$ wc file1
   - Filesystem permissions
     - Users and groups. Their location on the file system
       - https://www.digitalocean.com/community/tutorials/an-introduction-to-linux-permissions
-      - Explain the chmod, chown commands. Change permissions recursively
+      - The **chmod** command is used for changing the mode(i.e. the permissions) of a file. https://www.digitalocean.com/community/tutorials/linux-permissions-basics-and-how-to-use-umask-on-a-vps#types-of-permissions
+      - The **chown** command allows you to change the user and/or group ownership of a given file, directory, or symbolic link. https://linuxize.com/post/linux-chown-command/
+      - To change the permission of directory recursively add the -R option to the **chmod** command https://linuxize.com/post/chmod-recursive/  
+      `$ chmod -R MODE DIRECTORY`
+
+```console 
+the_great_danton@DESKTOP-7QSFUSB:~$ ls dir2 -l
+total 12
+drwxr-xr-x 2 the_great_danton the_great_danton 40Aug 28 19:36 dir2a
+drwxr-xr-x 2 the_great_danton the_great_danton 40Aug 28 19:36 dir2b
+drwxr-xr-x 3 the_great_danton the_great_danton 40Aug 28 19:37 dir2c
+the_great_danton@DESKTOP-7QSFUSB:~$ chmod -R 777 dir2/
+the_great_danton@DESKTOP-7QSFUSB:~$ ls dir2 -l
+total 12
+drwxrwxrwx 2 the_great_danton the_great_danton 40Aug 28 19:36 dir2a
+drwxrwxrwx 2 the_great_danton the_great_danton 40Aug 28 19:36 dir2b
+drwxrwxrwx 3 the_great_danton the_great_danton 40Aug 28 19:37 dir2c
+```
     - Symbolic links - creating file symlinks, directory symlinks
+```console
+the_great_danton@DESKTOP-7QSFUSB:~/symbolic links$ ln -s Thinking ThinkingS
+the_great_danton@DESKTOP-7QSFUSB:~/symbolic links$ ls -l
+total 4
+-rw-r--r-- 1 the_great_danton the_great_danton 9 Aug 28 20:01 Thinking
+lrwxrwxrwx 1 the_great_danton the_great_danton 8 Aug 28 20:01 ThinkingS -> Thinking
+```
+
+```console
+the_great_danton@DESKTOP-7QSFUSB:~/symbolic links$ ls
+Original
+the_great_danton@DESKTOP-7QSFUSB:~/symbolic links$ ln -s Original/ SoftLinkOriginal
+the_great_danton@DESKTOP-7QSFUSB:~/symbolic links$ ls -l
+total 4
+drwxr-xr-x 2 the_great_danton the_great_danton 4096 Aug 28 20:10 Original
+lrwxrwxrwx 1 the_great_danton the_great_danton    9 Aug 28 20:10 SoftLinkOriginal -> Original/
+```
     - Finding files and directories
       - Finding by name and type
+        - name
+```console
+the_great_danton@DESKTOP-7QSFUSB:~$ find . -name file1
+./symbolic links/Original/folder1/file1
+./symbolic links/Original/file1
+./file1
+```
+        - type
+```console
+the_great_danton@DESKTOP-7QSFUSB:~$ find . -type f
+./symbolic links/Original/file2
+./symbolic links/Original/folder1/file1
+./symbolic links/Original/file1
+./file2
+./.landscape/sysinfo.log
+./.sudo_as_admin_successful
+./copy_file.sh
+...
+```
       - Finding text in files
         - Recursively
         - Using text pattern
+```console
+the_great_danton@DESKTOP-7QSFUSB:~$ grep -r './' -e 'to'
+./Two cures for love:    2. The easy way: get to know him better.
+./dir3/textfile:to
+./.bash_logout:# when leaving the console clear the screen to increase privacy
+./.bashrc:# don't put duplicate lines or lines starting with space in the history.
+...        
+```
         - Using regular expression
+```console
+the_great_danton@DESKTOP-7QSFUSB:~$ grep p...e Two\ cures\ for\ love
+1. Don’t see him. Don’t phone or write a letter.
+```
+
 - Linux redirection https://www.guru99.com/linux-redirection.html
 - Pipes and their usage, the grep command (IPC) https://tldp.org/LDP/lpg/node21.html
 - CRON jobs, their definition
