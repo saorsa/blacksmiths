@@ -238,7 +238,8 @@ drwxrwxrwx 2 the_great_danton the_great_danton 40Aug 28 19:36 dir2a
 drwxrwxrwx 2 the_great_danton the_great_danton 40Aug 28 19:36 dir2b
 drwxrwxrwx 3 the_great_danton the_great_danton 40Aug 28 19:37 dir2c
 ```
-    - Symbolic links - creating file symlinks, directory symlinks
+- Symbolic links - creating file symlinks, directory symlinks
+
 ```console
 the_great_danton@DESKTOP-7QSFUSB:~/symbolic links$ ln -s Thinking ThinkingS
 the_great_danton@DESKTOP-7QSFUSB:~/symbolic links$ ls -l
@@ -256,16 +257,18 @@ total 4
 drwxr-xr-x 2 the_great_danton the_great_danton 4096 Aug 28 20:10 Original
 lrwxrwxrwx 1 the_great_danton the_great_danton    9 Aug 28 20:10 SoftLinkOriginal -> Original/
 ```
-    - Finding files and directories
-      - Finding by name and type
-        - name
+- Finding files and directories
+  - Finding by name and type
+    - name
+
 ```console
 the_great_danton@DESKTOP-7QSFUSB:~$ find . -name file1
 ./symbolic links/Original/folder1/file1
 ./symbolic links/Original/file1
 ./file1
 ```
-        - type
+    - type
+
 ```console
 the_great_danton@DESKTOP-7QSFUSB:~$ find . -type f
 ./symbolic links/Original/file2
@@ -277,9 +280,9 @@ the_great_danton@DESKTOP-7QSFUSB:~$ find . -type f
 ./copy_file.sh
 ...
 ```
-      - Finding text in files
-        - Recursively
-        - Using text pattern
+- Finding text in files
+  - Recursively
+  - Using text pattern
 ```console
 the_great_danton@DESKTOP-7QSFUSB:~$ grep -r './' -e 'to'
 ./Two cures for love:    2. The easy way: get to know him better.
@@ -288,7 +291,7 @@ the_great_danton@DESKTOP-7QSFUSB:~$ grep -r './' -e 'to'
 ./.bashrc:# don't put duplicate lines or lines starting with space in the history.
 ...        
 ```
-        - Using regular expression
+  - Using regular expression
 ```console
 the_great_danton@DESKTOP-7QSFUSB:~$ grep p...e Two\ cures\ for\ love
 1. Don’t see him. Don’t phone or write a letter.
