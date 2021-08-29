@@ -300,7 +300,7 @@ the_great_danton@DESKTOP-7QSFUSB:~$ grep p...e Two\ cures\ for\ love
 - Linux redirection https://www.guru99.com/linux-redirection.html
 - Pipes and their usage, the grep command (IPC) https://tldp.org/LDP/lpg/node21.html
 - CRON jobs, their definition
-- Using the tar command to archive/unarchive files
+- Using the tar command to archive/unarchive files https://www.howtogeek.com/248780/how-to-compress-and-extract-files-using-the-tar-command-on-linux/
 - Using the gzip/gunzip commands
 - Package managers - comparing apt-get and snap for ubuntu
   - Using YUM in Centos
@@ -327,7 +327,7 @@ the_great_danton@DESKTOP-7QSFUSB:~$ grep p...e Two\ cures\ for\ love
   - Control statements
   - Bash brackets https://dev.to/rpalo/bash-brackets-quick-reference-4eh6
   - Functions
-  - Detecting arguments and positional parameters
+  - Detecting arguments and positional parameters https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/
   - Detecting last command exit code
   - Interpolating command in a Variables
   - conditional statements
