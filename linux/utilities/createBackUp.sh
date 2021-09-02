@@ -2,21 +2,22 @@
 
 if [ ! -f ~/.my.cnf ]; 
 then
-    echo "Credentials file .my.cnf not found in ${HOME}"
+    echo "Credentials file .my.cnf not found at ${HOME}"
 	exit 1
 elif [ ! -f ~/.pgpass ];
 then
-	echo "Credentials file .pgpass not found in ${HOME}"
+	echo "Credentials file .pgpass not found at ${HOME}"
 	exit 1
 fi
 
 
-backup_name=$(date +"%Y-%m-%d-%H-%M")".tar.gz"
+backup_name=$(date +"%Y-%m-%d-%H-%M")
 
 createBackUp ()
 {
-	tar  -czf $backup_name ./$backup_name
-	mv $backup_name ${BACKUP_FOLDER}${backup_name}
+	tar  -czf $backup_name".tar.gz" ./$backup_name
+	mv $backup_name".tar.gz" ${BACKUP_FOLDER}${backup_name}".tar.gz"
+	rm $backup_name
 }
 
 while getopts ":pm" option

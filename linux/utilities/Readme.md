@@ -10,11 +10,11 @@ This is the explanation on how to work with createBackUp.sh
     export BACKUP_FOLDER=/desired path/
     ```
 
-    - In your home directory create files **.pgpass** and **.my.cnf**. The files contain the authorization information required respectivly for the postgresql and mysql databases.
+    - In your home directory create files **.pgpass** and **.my.cnf**. The files contain the authorization information required respectivly for the postgresql and mysql databases. Both files must be with permisions 600(chmod 600 .pgpass/.mt.cnf)
       - Syntax of .pgpass
         ```
         hostname:port:database:username:password
-        *Example - *:*:*:postgre_admin:ParolraRibaMech2*
+        *Example - *:*:*:postgre_admin:ParolaRibaMech2*
         ```
       - Syntax of .my.cnf
         ```
