@@ -3,25 +3,31 @@
 POSPARAM=("$@")
 
 findBackup () {
+    if [ "${POSPARAM[1]}" == "latest" ]; then
+        backupName=$(ls /$BACKUP_FOLDER/ | tail -n 1)
+    else
+        backupName=${POSPARAM[0]}"_"${POSPARAM[1]}".tar.gz"
+    fi
+    
     backupLocation=$BACKUP_FOLDER$backupName
     if [ -f $backupLocation ]; then
         tar -xzf $backupLocation -C ./
     else 
         echo ${POSPARAM[0]}" backup from "${POSPARAM[1]}" does not exist"
     fi
+    backupName=$(echo $backupName | cut -d"." -f1)
 }
 
-findLastestBackup () {
-    
-}
 
 if [ "$1" == "mysql" ]; then
     . ./mysql.backup.properties.sh
-    backupName=$1"_"$2".tar.gz"
-    findBackup    
+    findBackup
+    mysql -u mysql_admin -h automata < ./$backupName
+    rm ./$backupName    
     
 elif [ "$1" == "postgresql" ]; then
     . ./pgsql.backup.properties.sh
-    backupName=$1"_"$2".tar.gz"
     findBackup
+    psql -U postgre_admin -h automata < ./$backupName postgres &>/dev/null
+    rm ./$backupName
 fi
