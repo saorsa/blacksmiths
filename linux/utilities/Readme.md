@@ -1,10 +1,10 @@
-####How to work with createBackUp.sh
+#### How to work with createBackUp.sh
   - how to use
     - options
       - p:arg - create a backup of the psotgresql databases. The argument is the name of the db that should be backed up.
       - m:arg - create a backup of the mysql databases. The argument is the name of the db that should be backed up.
 
-####How to work with restoreBackUp.sh
+#### How to work with restoreBackUp.sh
  - how to use
    - arguments
      - mysql/postgresql - both MySQL and PostgreSQL are supported by the script
@@ -12,7 +12,7 @@
      - name of db - the name of the database to be used. If it does no exist it will be created.
      - yes/no - specify if the database should be dropped before restoring it.
 
-####Configuration
+#### Configuration
  - files **mysql.backup.properties.sh** and**pgsqlbackup.properties.sh** define the location inwhichthe archived backup will be stored. Bothfilescontain an exported virable calledBACKUP_FOLDERwhich contains the desired path
  ```bash
  export BACKUP_FOLDER=/desired path/
