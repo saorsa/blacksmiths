@@ -20,7 +20,7 @@ createBackUp ()
 	rm $backup_name
 }
 
-while getopts ":pm" option
+while getopts ":p:m:" option
 do
 	case "${option}"
 	in
@@ -28,13 +28,13 @@ do
  		 p)
 		  	. ./pgsql.backup.properties.sh
 			backup_name="postgresql_"$backup_name
-			pg_dumpall -U postgre_admin -h automata -w -f ${backup_name}
+			pg_dump -U postgre_admin -h automata -w $OPTARG > ${backup_name}
 			createBackUp
 		 ;;
  		 m)
 		  	. ./mysql.backup.properties.sh
 			backup_name="mysql_"$backup_name
-			mysqldump -u mysql_admin -h automata -A -r ${backup_name} 
+			mysqldump -u mysql_admin -h automata $OPTARG > ${backup_name} 
 			createBackUp
 		;;
  		 *)echo "not a valid option";;
