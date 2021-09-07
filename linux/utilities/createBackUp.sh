@@ -13,7 +13,7 @@ fi
 
 backup_name=$(date +"%Y-%m-%d-%H-%M")
 
-createBackUp ()
+compress_backup ()
 {
 	tar  -czf $backup_name".tar.gz" ./$backup_name
 	mv $backup_name".tar.gz" ${BACKUP_FOLDER}${backup_name}".tar.gz"
@@ -29,14 +29,14 @@ do
 		  	. ./pgsql.backup.properties.sh
 			backup_name="postgresql_"$backup_name
 			pg_dump -U postgre_admin -h automata -w $OPTARG > ${backup_name}
-			createBackUp
+			compress_backup
 		 ;;
  		 m)
 		  	. ./mysql.backup.properties.sh
 			backup_name="mysql_"$backup_name
 			mysqldump -u mysql_admin -h automata $OPTARG > ${backup_name} 
-			createBackUp
-		;;
+			compress_backup
+		 ;;
  		 *)echo "not a valid option";;
 	esac
 done
