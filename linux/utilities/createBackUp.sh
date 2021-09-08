@@ -10,7 +10,6 @@ then
 	exit 1
 fi
 
-
 backup_name=$(date +"%Y-%m-%d-%H-%M")
 
 compress_backup ()
@@ -28,13 +27,13 @@ do
  		 p)
 		  	. ./pgsql.backup.properties.sh
 			backup_name="postgresql_"$backup_name
-			pg_dump -U postgre_admin -h automata -w $OPTARG > ${backup_name}
+			. ./createPostgreSQLBackUp.sh -d $OPTARG -b $backup_name
 			compress_backup
 		 ;;
  		 m)
 		  	. ./mysql.backup.properties.sh
 			backup_name="mysql_"$backup_name
-			mysqldump -u mysql_admin -h automata $OPTARG > ${backup_name} 
+			. ./createMySQLBackUp.sh -d $OPTARG -b $backup_name
 			compress_backup
 		 ;;
  		 *)echo "not a valid option";;
