@@ -4,7 +4,7 @@ POSPARAM=("$@")
 
 findBackup () {
     if [ "${POSPARAM[1]}" == "latest" ]; then
-        backupName=$(ls -rt /$BACKUP_FOLDER/ | tail -n 1)
+        backupName=$(ls -t /$BACKUP_FOLDER/ | head -n 1)
     else
         backupName=${POSPARAM[0]}"_"${POSPARAM[1]}".tar.gz"
     fi
