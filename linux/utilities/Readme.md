@@ -4,6 +4,24 @@
       - p:arg - create a backup of the psotgresql databases. The argument is the name of the db that should be backed up.
       - m:arg - create a backup of the mysql databases. The argument is the name of the db that should be backed up.
 
+#### How to work with **createPostgreSQLBackUp.sh**
+  - how to use
+    - options
+      - u:arg - User for connecting to postgresql
+      - h:arg - Host for connecting to postgresql
+      - d:arg - Database that will be backed up
+      - b:arg - The name of the back up file.
+    - Note - none of the options are mandatory. If any of them are omitted, default values from **pgsqlbackup.properties.sh** will be taken.
+
+#### How to work with **createMySQLBackUp.sh**
+  - how to use
+    - options
+      - u:arg - User for connecting to mysql
+      - h:arg - Host for connecting to mysql
+      - d:arg - Database that will be backed up
+      - b:arg - The name of the back up file.
+    - Note - none of the options are mandatory. If any of them are omitted, default values from **mysqlbackup.properties.sh** will be taken.
+
 #### How to work with **restoreBackUp.sh**
  - how to use
    - arguments
@@ -22,8 +40,18 @@
       - r:arg - Drop database before restore - **yes/no**
     - Note - none of the options are mandatory. If any of them are omitted, default values from **pgsqlbackup.properties.sh** will be taken. The default values for *-r* is *no*
 
+#### How to work with **restoreMySQLBackUp.sh**
+  - how to use
+    - options
+      - u:arg - User for connecting to mysql
+      - h:arg - Host for connecting to mysql
+      - d:arg - Database in which the .sql backup will be restored to. This database must exist before executing the script.
+      - b:arg - The .sql backup that will be restored.
+      - r:arg - Drop database before restore - **yes/no**
+    - Note - none of the options are mandatory. If any of them are omitted, default values from **mysqlbackup.properties.sh** will be taken. The default values for *-r* is *no*
+
 #### Configuration
- - files **mysql.backup.properties.sh** and **pgsqlbackup.properties.sh** define the location inwhichthe archived backup will be stored. Both files  contain an exported virables used for configurating the create and restore of backups. The needed variables are:
+ - files **mysql.backup.properties.sh** and **pgsqlbackup.properties.sh** define the location in which the archived backup will be stored. Both files  contain an exported virables used for configurating the create and restore of backups. The needed variables in both file are:
  ```bash
 export BACKUP_FOLDER=*postgresql/mysql backup folder path*
 export USER_NAME=*default postgresql/mysql user for accessing the database*
