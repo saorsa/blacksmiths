@@ -32,8 +32,8 @@ do
 done
 
 if [ "$removeDB" == "yes" ]; then
-     psql -U $psqlUserName -h $host marto_test -c "drop database $dbName;" &>/dev/null
+     dropdb -U $psqlUserName -h $host $dbName #&>/dev/null
 fi
 
-psql -U $psqlUserName -h $host marto_test -c "create database $dbName;" &>/dev/null
-psql -U $psqlUserName -h $host $dbName < ./$backUpDB &>/dev/null
+createdb -U $psqlUserName -h $host $dbName #&>/dev/null
+psql -U $psqlUserName -h $host $dbName < ./$backUpDB #&>/dev/null
