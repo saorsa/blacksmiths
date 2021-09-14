@@ -1,7 +1,7 @@
 #! /bin/bash
 
 usage=$'
-'$0' [-u username] [-h host] [-l back_up_name] [-b database_name]
+'$0' [-u username] [-h host] [-l back_up_name] [-n database_name]
 Creates a database back up for PostgreSQL:
     -u  database user - mandatory option
     -h  host - mandatory option
