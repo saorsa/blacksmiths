@@ -1,54 +1,28 @@
 #! /bin/bash
 
 usage=$'
-'$0' [-u username] [-h host] [-b back_up_name] [-d database_name]
+'$0' [-u username] [-h host] [-b back_up_name] [-n database_name]
 Creates a database back up for PostgreSQL:
     -u  database user - mandatory option
     -h  host - mandatory option
-    -b  name of the back up that will be created - mandatory option
-    -d  name of the database that will be backed up - mandatory option
+    -l  name of the back up that will be created - mandatory option
+    -n  name of the database that will be backed up - mandatory option
 	'
 
-userNameEntered=false
-hostEntered=false
-databaseNameEntered=false
-backupNameEntered=false
+#input validation
+. ./createOptionParser.sh $@
+if [ ! $? = 0 ]; then
+	echo "$usage"
+	exit 1
+fi
 
-while getopts ":u:h:d:b:" option
-do
-	case "${option}"
-	in
-
- 		 u)
-		  	userNameEntered=true
-            psqlUserName=$OPTARG
-		 ;;
- 		 h)
-		  	hostEntered=true
-		  	host=$OPTARG
-		 ;;
-         d)
-		 	databaseEntered=true
-            dbName=$OPTARG
-         ;;
-         b)
-		 	backupNameEntered=true
-            backUpDB=$OPTARG
-         ;;
- 		 *)
-		  	echo "$usage"
-			exit 1
-		  ;;
-	esac
-done
-
-if [ "$userNameEntered" = false ] || 
+if [ "$dbUserEntered" = false ] || 
    [ "$hostEntered" = false ] || 
-   [ "$databaseEntered" = false ] || 
-   [ "$backupNameEntered" = false ]; 
+   [ "$dbNameEntered" = false ] || 
+   [ "$backUpNameEntered" = false ]; 
    then
 	echo "$usage"
 	exit 1
 fi
 
-pg_dump -U $psqlUserName -h $host -w $dbName > $backUpDB
+pg_dump -U $dbUser -h $host -w $dbName > $backUpName

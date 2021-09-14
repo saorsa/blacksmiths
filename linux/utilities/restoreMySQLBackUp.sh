@@ -25,7 +25,7 @@ do
 	     	userNameEntered=true
          mysqlUserName=$OPTARG
 		;;
- 		 h)
+ 		h)
 		  	hostEntered=true
 		  	host=$OPTARG
 		;;

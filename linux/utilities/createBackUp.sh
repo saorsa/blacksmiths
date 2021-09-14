@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#set -x
 usage=$'
 '$0' [-u username] [-h host] [-b back_up_folder] [-n name_of_database_to_be_backed_up] [-d mysql/postgresql]
 Creates a database back up for MySQL or PostgreSQL:
@@ -9,7 +9,6 @@ Creates a database back up for MySQL or PostgreSQL:
     -n  the name of the database that will be backed up - mandatory option
     -d  mysql/postgresql - mandatory option
 	'
-
 
 if [ ! -f ~/.my.cnf ]; 
 then
@@ -22,11 +21,7 @@ then
 fi
 
 backup_name=$(date +"%Y-%m-%d-%H-%M")
-dbUserEntered=false
-hostEntered=false
-backUpFolderEntered=false
-dbNameEntered=false
-databaseEntered=false
+
 
 compress_backup ()
 {
@@ -35,41 +30,12 @@ compress_backup ()
 	rm $backup_name
 }
 
-while getopts ":u:h:b:n:d:" option
-do
-	case "${option}"
-	in
-		 u)
-		 	#database user
-		 	dbUserEntered=true
-			dbUser=$OPTARG
-		 ;;
-		 h)
-		 	#host name
-			hostEntered=true
-			host=$OPTARG
-		 ;;
-		 b)
-		 	#backup folder
-			backUpFolderEntered=true
-			backUpFolder=$OPTARG
-		 ;;
-		 n)
-		 	#database name to be dumped
-			dbNameEntered=true
-			dbName=$OPTARG
-		 ;;
-		 d)
-			#database
-			databaseEntered=true
-			database=$OPTARG
-		 ;;
- 		 *)
-		  	echo "$usage"
-			exit 1
-		  ;;
-	esac
-done
+# input validation
+. ./createOptionParser.sh $@
+if [ ! $? = 0 ]; then
+	echo "$usage"
+	exit 1
+fi
 
 if [ "$dbUserEntered" = false ] || 
    [ "$hostEntered" = false ] || 
@@ -87,7 +53,7 @@ if [ $database = "mysql" ];then
 	fi
 
 	backup_name="mysql_"$backup_name
-	./createMySQLBackUp.sh -u $dbUser -h $host -d $dbName -b $backup_name
+	./createMySQLBackUp.sh -u $dbUser -h $host -n $dbName -l $backup_name
 	compress_backup
 
 elif [ $database = "postgresql" ];then
@@ -97,8 +63,8 @@ elif [ $database = "postgresql" ];then
 	fi
 
 	backup_name="postgresql_"$backup_name
-	./createPostgreSQLBackUp.sh -u $dbUser -h $host -d $dbName -b $backup_name
+	./createPostgreSQLBackUp.sh -u $dbUser -h $host -n $dbName -l $backup_name
 	compress_backup
 else
-	echo "not supported database"
+	echo "$usage"
 fi

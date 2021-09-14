@@ -12,6 +12,16 @@ Restores a database back up to MySQL or PostgreSQL:
     -r  drop database before restore. If not specified the database wont be droped.
 	'
 
+if [ ! -f ~/.my.cnf ]; 
+then
+    echo "Credentials file .my.cnf not found at ${HOME}"
+	exit 1
+elif [ ! -f ~/.pgpass ];
+then
+	echo "Credentials file .pgpass not found at ${HOME}"
+	exit 1
+fi
+
 dbUserEntered=false
 hostEntered=false
 backUpFolderEntered=false
@@ -35,8 +45,6 @@ findBackup () {
     fi
     backupName=$(echo $backupName | cut -d"." -f1)
 }
-
-
 
 while getopts ":u:h:b:n:d:r:" option
 do
@@ -79,7 +87,7 @@ do
  		 *)
 		  	echo "$usage"
 			exit 1
-		  ;;
+		 ;;
 	esac
 done
 
@@ -91,7 +99,6 @@ if [ "$dbUserEntered" = false ] ||
 	echo "$usage"
 	exit 1
 fi
-
 
 if [ "$database" == "mysql" ]; then
 
