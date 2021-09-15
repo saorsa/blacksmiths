@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -x
+
 usage=$'
 '$0' [-u username] [-h host] [-f back_up_folder] [-b date_of_the_backup/latest] [-n name_of_database] [-d mysql/postgresql [-r yes/no]]
 Restores a database back up to MySQL or PostgreSQL:
@@ -22,14 +22,6 @@ then
 	exit 1
 fi
 
-dbUserEntered=false
-hostEntered=false
-backUpFolderEntered=false
-dbNameEntered=false
-databaseEntered=false
-backUpNameEntered=false
-removeDatabase=no
-
 findBackup () {
     if [ "$backUpDate" == "latest" ]; then
         backupName=$(ls -t /$backUpFolder/ | head -n 1)
@@ -46,50 +38,12 @@ findBackup () {
     backupName=$(echo $backupName | cut -d"." -f1)
 }
 
-while getopts ":u:h:b:n:d:r:" option
-do
-	case "${option}"
-	in
-		 u)
-		 	#database user
-		 	dbUserEntered=true
-			dbUser=$OPTARG
-		 ;;
-		 h)
-		 	#host name
-			hostEntered=true
-			host=$OPTARG
-		 ;;
-		 f)
-		 	#folder that contains the backup
-			backUpFolderEntered=true
-			backUpFolder=$OPTARG
-		 ;;
-         b)
-            #date of the backup that will be restored
-            backUpNameEntered=true
-            backUpDate=$OPTARG
-         ;;
-		 n)
-		 	#database name to be restored or latest
-			dbNameEntered=true
-			dbName=$OPTARG
-		 ;;
-		 d)
-			#database
-			databaseEntered=true
-			database=$OPTARG
-		 ;;
-         r)
-            #drop database before restore
-            removeDatabase=$OPTARG
-         ;;
- 		 *)
-		  	echo "$usage"
-			exit 1
-		 ;;
-	esac
-done
+#input validation
+. ./restoreOptionParser.sh $@
+if [ ! $? = 0 ]; then
+	echo "$usage"
+	exit 1
+fi
 
 if [ "$dbUserEntered" = false ] || 
    [ "$hostEntered" = false ] || 
@@ -108,7 +62,7 @@ if [ "$database" == "mysql" ]; then
 	fi
 
     findBackup   
-    ./restoreMySQLBackUp.sh -u $dbUser -h $host -d $dbName -b $backupName -r $removeDatabase
+    ./restoreMySQLBackUp.sh -u $dbUser -h $host -n $dbName -b $backupName -r $removeDatabase
     rm ./$backupName    
     
 elif [ "$database" == "postgresql" ]; then
@@ -119,6 +73,6 @@ elif [ "$database" == "postgresql" ]; then
 	fi
 
     findBackup
-    ./restorePostgreSQLBackUp.sh -u $dbUser -h $host -d $dbName -b $backupName -r $removeDatabase
+    ./restorePostgreSQLBackUp.sh -u $dbUser -h $host -n $dbName -b $backupName -r $removeDatabase
     rm ./$backupName
 fi

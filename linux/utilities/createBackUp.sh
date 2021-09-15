@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -x
+
 usage=$'
 '$0' [-u username] [-h host] [-b back_up_folder] [-n name_of_database_to_be_backed_up] [-d mysql/postgresql]
 Creates a database back up for MySQL or PostgreSQL:
