@@ -1,0 +1,1 @@
+https://developers.google.com/web/updates/2018/07/page-lifecycle-api
